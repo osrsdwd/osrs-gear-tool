@@ -1,4 +1,4 @@
-package com.dwd.model;
+package com.dwd.model.osrsapi;
 
 public class PriceTrend {
     private String price;

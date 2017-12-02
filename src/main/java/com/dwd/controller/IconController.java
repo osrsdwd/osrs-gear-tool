@@ -1,7 +1,7 @@
 package com.dwd.controller;
 
 import com.dwd.AppConstants;
-import com.dwd.model.Item;
+import com.dwd.model.osrsapi.Item;
 import com.dwd.persistence.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

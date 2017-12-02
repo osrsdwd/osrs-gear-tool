@@ -1,8 +1,7 @@
-package com.dwd.model;
+package com.dwd.model.osrsapi;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import java.util.List;
 import java.util.Set;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
