@@ -27,12 +27,13 @@ public class ItemRetrieverController {
     private static final Logger logger = Logger.getLogger(ItemRetrieverController.class);
 
     @Autowired
-    RestTemplate restTemplate;
+    private RestTemplate restTemplate;
 
     @Autowired
-    ItemRepository itemRepository;
+    private ItemRepository itemRepository;
 
-    private ObjectMapper mapper = new ObjectMapper();
+    @Autowired
+    private ObjectMapper mapper;
 
     /**
      * Get one page worth of items beginning with a certain letter

@@ -3,11 +3,11 @@ package com.dwd.controller;
 import com.dwd.AppConstants;
 import com.dwd.model.osrsapi.Item;
 import com.dwd.persistence.ItemRepository;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -18,14 +18,13 @@ import java.net.URL;
 import java.util.List;
 
 @RestController
-@RequestMapping("getIcons")
+@RequestMapping("icons")
 public class IconController {
 
-    @Autowired
-    RestTemplate restTemplate;
+    private static final Logger logger = Logger.getLogger(IconController.class);
 
     @Autowired
-    ItemRepository itemRepository;
+    private ItemRepository itemRepository;
 
     /**
      * Get a single image and save it
@@ -58,7 +57,7 @@ public class IconController {
     @RequestMapping("/all")
     public void get() {
         List<Item> items = itemRepository.findAll();
-        System.out.println(items.size());
+        logger.info("Attempting to download " + items.size() + " icons");
         File dir = new File(AppConstants.ICON_PATH);
         
         if(!dir.exists()){
@@ -75,7 +74,7 @@ public class IconController {
                 }
 
                 ImageIO.write(img, "gif", file);
-                System.out.println(String.format("Item %s saved successfully", item.getName()));
+                logger.info(String.format("Item %s saved successfully", item.getName()));
 
             } catch (IOException e) {
                 e.printStackTrace();

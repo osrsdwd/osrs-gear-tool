@@ -2,6 +2,7 @@ resources/*
 mvnw*
 .mvn
 target/
+logs/*
 !.mvn/wrapper/maven-wrapper.jar
 
 ### STS ###
@@ -17,11 +18,3 @@ target/
 *.iws
 *.iml
 *.ipr
-
-### NetBeans ###
-nbproject/private/
-build/
-nbbuild/
-dist/
-nbdist/
-.nb-gradle/
