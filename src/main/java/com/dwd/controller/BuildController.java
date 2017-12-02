@@ -4,10 +4,9 @@ import com.dwd.model.build.Build;
 import com.dwd.persistence.BuildRepository;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/builds")
@@ -22,5 +21,11 @@ public class BuildController {
     public void save(@RequestBody Build build) {
             buildRepository.save(build);
             logger.info("Saved build " + build.getBuildName() + " to database");
+    }
+
+    @RequestMapping(value = "/load", method = RequestMethod.GET)
+    public ResponseEntity<Build> load(@RequestParam("name") String name){
+        Build build = buildRepository.findByBuildName(name);
+        return new ResponseEntity<>(build, HttpStatus.OK);
     }
 }
