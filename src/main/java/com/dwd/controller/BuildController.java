@@ -19,13 +19,17 @@ public class BuildController {
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public void save(@RequestBody Build build) {
-            buildRepository.save(build);
-            logger.info("Saved build " + build.getBuildName() + " to database");
+        buildRepository.save(build);
+        logger.info("Saved build " + build.getBuildName() + " to database");
     }
 
     @RequestMapping(value = "/load", method = RequestMethod.GET)
-    public ResponseEntity<Build> load(@RequestParam("name") String name){
+    public ResponseEntity<Build> load(@RequestParam("name") String name) {
         Build build = buildRepository.findByBuildName(name);
-        return new ResponseEntity<>(build, HttpStatus.OK);
+        if (build == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } else {
+            return new ResponseEntity<>(build, HttpStatus.OK);
+        }
     }
 }

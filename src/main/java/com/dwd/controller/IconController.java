@@ -42,10 +42,8 @@ public class IconController {
                 output.createNewFile();
             }
             ImageIO.write(image, "gif", output);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error(e);
         }
     }
 
@@ -77,7 +75,7 @@ public class IconController {
                 logger.info(String.format("Item %s saved successfully", item.getName()));
 
             } catch (IOException e) {
-                e.printStackTrace();
+                logger.error(e);
             }
         }
     }

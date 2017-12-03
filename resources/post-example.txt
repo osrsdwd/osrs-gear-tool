@@ -1,0 +1,1 @@
+curl -X POST -d @Z:/Users/Matthew/Documents/Coding/osrs-gear-tool/resources/schema/gear-setup.json localhost:8080/builds/save --header "Content-Type:application/json"

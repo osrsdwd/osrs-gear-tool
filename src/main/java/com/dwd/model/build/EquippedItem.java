@@ -1,11 +1,27 @@
 package com.dwd.model.build;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class EquippedItem {
     private Slot slot;
-    private int itemId;
+    private Integer itemId;
+    private Integer quantity;
 
-    public int getItemId() {
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    public Integer getItemId() {
         return itemId;
+    }
+
+    public void setItemId(Integer itemId) {
+        this.itemId = itemId;
     }
 
     public Slot getSlot() {
@@ -14,9 +30,5 @@ public class EquippedItem {
 
     public void setSlot(Slot slot) {
         this.slot = slot;
-    }
-
-    public void setItemId(int itemId) {
-        this.itemId = itemId;
     }
 }

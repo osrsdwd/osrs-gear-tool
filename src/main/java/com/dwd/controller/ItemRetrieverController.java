@@ -140,7 +140,7 @@ public class ItemRetrieverController {
                 try {
                     Thread.sleep(5000);
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    logger.warn(e);
                 }
                 logger.warn(String.format("alpha %s and page %s returned null, retrying", alpha, page));
                 responseEntity = restTemplate.getForEntity(url, String.class);
@@ -151,12 +151,8 @@ public class ItemRetrieverController {
             ApiResponse parsedResponse = mapper.readValue(responseEntity.getBody(), ApiResponse.class);
             return parsedResponse.getItems();
 
-        } catch (JsonParseException e) {
-            e.printStackTrace();
-        } catch (JsonMappingException e) {
-            e.printStackTrace();
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error(e);
         }
 
         //return an empty set if something breaks

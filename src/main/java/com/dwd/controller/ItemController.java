@@ -17,11 +17,7 @@ public class ItemController {
 
     @Autowired
     private ItemRepository itemRepository;
-    /**
-     * Get every item from the api and save to the database
-     *
-     * @return a set containing all the retrieved items
-     */
+
     @RequestMapping("/all")
 
     public List<Item> getAll(){
