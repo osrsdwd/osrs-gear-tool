@@ -1,6 +1,6 @@
 package com.dwd.controller;
 
-import com.dwd.model.build.Build;
+import com.dwd.model.Build;
 import com.dwd.persistence.BuildRepository;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;

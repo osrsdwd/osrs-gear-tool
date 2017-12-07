@@ -1,4 +1,4 @@
-package com.dwd.model.build;
+package com.dwd.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -13,8 +13,8 @@ public class Build {
     private String creatorName;
     private String buildName;
     private List<String> tags;
-    private List<EquippedItem> equipped;
-    private List<InventoryItem> inventory;
+    private List<EquipmentSlot> equipped;
+    private List<InventorySlot> inventory;
 
     @Override
     public String toString() {
@@ -70,19 +70,19 @@ public class Build {
         this.buildName = buildName;
     }
 
-    public List<EquippedItem> getEquipped() {
+    public List<EquipmentSlot> getEquipped() {
         return equipped;
     }
 
-    public void setEquipped(List<EquippedItem> equipped) {
+    public void setEquipped(List<EquipmentSlot> equipped) {
         this.equipped = equipped;
     }
 
-    public List<InventoryItem> getInventory() {
+    public List<InventorySlot> getInventory() {
         return inventory;
     }
 
-    public void setInventory(List<InventoryItem> inventory) {
+    public void setInventory(List<InventorySlot> inventory) {
         this.inventory = inventory;
     }
 }

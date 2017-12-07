@@ -1,4 +1,4 @@
-package com.dwd.model.osrsapi;
+package com.dwd.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

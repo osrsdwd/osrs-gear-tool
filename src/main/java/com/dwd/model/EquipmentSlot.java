@@ -1,12 +1,11 @@
-package com.dwd.model.build;
+package com.dwd.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class InventoryItem {
-    private Integer position;
+public class EquipmentSlot {
+    private Slot slot;
     private Integer itemId;
-    private Boolean stackable;
     private Integer quantity;
 
     public Integer getQuantity() {
@@ -17,27 +16,19 @@ public class InventoryItem {
         this.quantity = quantity;
     }
 
-    public Boolean isStackable() {
-        return stackable;
-    }
-
-    public void setStackable(Boolean stackable) {
-        this.stackable = stackable;
-    }
-
-    public Integer getPosition() {
-        return position;
-    }
-
-    public void setPosition(Integer position) {
-        this.position = position;
-    }
-
     public Integer getItemId() {
         return itemId;
     }
 
     public void setItemId(Integer itemId) {
         this.itemId = itemId;
+    }
+
+    public Slot getSlot() {
+        return slot;
+    }
+
+    public void setSlot(Slot slot) {
+        this.slot = slot;
     }
 }

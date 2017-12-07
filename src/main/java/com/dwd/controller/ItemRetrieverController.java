@@ -1,11 +1,9 @@
 package com.dwd.controller;
 
 import com.dwd.AppConstants;
-import com.dwd.model.osrsapi.ApiResponse;
-import com.dwd.model.osrsapi.Item;
+import com.dwd.model.ApiResponse;
+import com.dwd.model.Item;
 import com.dwd.persistence.ItemRepository;
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +15,9 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @RestController
@@ -64,6 +64,10 @@ public class ItemRetrieverController {
     public Set<Item> getAll() {
         //note category is always 1 for osrs, returns all items
         Set<Item> items = new HashSet<>();
+        List<Character> alphanumericChars = new ArrayList<>();
+        for (char alpha = '0'; alpha <= '9'; alpha++) {
+            alphanumericChars.add(alpha);
+        }
         for (char alpha = 'a'; alpha <= 'z'; alpha++) {
             Set<Item> temp = recursiveFetch(new HashSet<>(), alpha, 1);
             items.addAll(temp);
@@ -88,7 +92,7 @@ public class ItemRetrieverController {
         Set<Item> items = new HashSet<>();
         items.addAll(recursiveFetch(new HashSet<>(), alpha, 1));
 
-       logger.info(String.format("Saving alpha %s to db", alpha));
+        logger.info(String.format("Saving alpha %s to db", alpha));
         itemRepository.save(items);
 
         return items;

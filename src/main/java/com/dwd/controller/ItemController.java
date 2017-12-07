@@ -1,6 +1,6 @@
 package com.dwd.controller;
 
-import com.dwd.model.osrsapi.Item;
+import com.dwd.model.Item;
 import com.dwd.persistence.ItemRepository;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;

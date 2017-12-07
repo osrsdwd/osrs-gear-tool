@@ -1,4 +1,4 @@
-package com.dwd.model.osrsapi;
+package com.dwd.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -16,14 +16,25 @@ public class Item {
     @JsonIgnore
     private PriceTrend current;
 
+    @JsonIgnore
+    private PriceTrend today;
+
     private String description;
     private URL icon;
     private URL icon_large;
     private boolean members;
     private String name;
+    private Slot slot;
+    private String type;
+    private URL typeIcon;
 
-    @JsonIgnore
-    private PriceTrend today;
+    public Slot getSlot() {
+        return slot;
+    }
+
+    public void setSlot(Slot slot) {
+        this.slot = slot;
+    }
 
     public PriceTrend getCurrent() {
         return current;
@@ -32,9 +43,6 @@ public class Item {
     public void setCurrent(PriceTrend current) {
         this.current = current;
     }
-
-    private String type;
-    private URL typeIcon;
 
     @Override
     public String toString() {
